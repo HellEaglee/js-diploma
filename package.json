@@ -3,13 +3,10 @@
     "source": "./src/index.html",
     "scripts": {
         "start": "parcel",
-        "build": "parcel"
-    },
-    "dependencies": {
-        "parcel": "latest"
+        "build": "parcel build"
     },
     "devDependencies": {
         "@parcel/transformer-sass": "^2.3.2",
-        "parcel-bundler": "^1.12.5"
+        "parcel": "latest"
     }
 }
