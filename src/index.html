@@ -6,12 +6,263 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./scss/index.scss">
-    <title>Document</title>
+    <title>Pinterest clone</title>
 </head>
 
 <body>
-    
+    <header class="main_header">
+        <div class="header_wrapper">
+            <div class="main_header_logo">
+                <img class="header_logo"src="./images/Pinterest-logo.png" alt="Pinterest-logo">
+            </div>
+
+            <div class="main_header_button">
+                <button class="header_button">Главная</button>
+            </div>
+
+            <div class="main_header_input">
+                <input class="header_input" type="text" placeholder="Поиск">
+            </div>
+
+            <div class="main_header_bell" onclick="popupToggleNotifications();">
+                <img class="header_bell" src="./images/Notification-bell.png" alt="Notification-bell">
+            </div>
+            <div class="header_bell_popup" id="header_bell_popup">
+                <div class="header_bell_content">
+                    <h2>Обновления</h2>
+                    <h1>Нет уведомлений (пока что)</h1>
+                    <p>Просмотрите свою ленту, создайте доску или подпишитесь на идеи других пользователей, 
+                    которые вас вдохновляют.</p>
+                </div>
+            </div>
+
+            <div class="main_header_inbox" onclick="popupToggleInBox()">
+                <img class="header_inbox" src="./images/inbox.png" alt="inbox">
+            </div>
+            <div class="header_inbox_popup" id="header_inbox_popup">
+                <div class="header_inbox_content">
+                    <div class="inbox_content">
+                        <div class="content_head">
+                            <p>Входящие</p>
+                            <img class="content_dots" src="./images/three-dots.png" alt="three-dots" onclick="popupToggleClean();">
+                            <div class="inbox_content_cleaning" id="clean_popup" >
+                                Отметить всё как прочитанное
+                            </div>
+                            <img class="content_messages" src="./images/messages-icon.png" alt="messages-icon" onclick="popupToggleMessages();">
+                        </div>
+                        <div>
+                            <h1>Делитесь идеями с друзьями</h1>
+                            <input class="content_input" type="text" placeholder="Поиск по имени или эл. адресу">
+                        </div>
+                    </div>
+                    <div class="inbox_content_second" id="content_second">
+                        <div class="content_second_head">
+                            <h1>Новое сообщение</h1>
+                            <button onclick="popupToggleSecond()">Отмена</button>
+                        </div>
+                        <input class="content_second_input" type="text" placeholder="Поиск по имени или эл. адресу">
+                        <div class="content_second_foot">
+                            <img class="content_second_pin" src="./images/pin-icon.png" alt="pin">
+                            <input class="second_input" type="text" placeholder="Введите сообщение">
+                            <img class="content_second_heart"src="./images/heart-icon.png" alt="favorite">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main_header_profile">
+                <img class="header_profile" src="./images/Profile-picture.png" alt="Profile-picture">
+            </div>
+
+            <div class="main_header_expand" onclick="popupToggleExpand();">
+                <img class="header_expand" src="./images/expand-arrow-down.png" alt="expand-arrow-down">
+            </div>
+            <div class="header_expand_popup" id="header_expand_popup">
+                <div class="expand_popup_content">
+                    <h3>Сейчас</h3>
+                    <div class="expand_popup_profile">
+                        <img class="expand_popup_picture" src="./images/Profile-picture.png" alt="Profile-picture">
+                        <div>
+                            <p>Hell Eaglee</p>
+                            <p>Личный</p>
+                            <p>********eee@gmail.com</p>
+                        </div>
+                        <img class="expand_popup_check" src="./images/check-icon.png" alt="check-icon">
+                    </div>
+                    <h3>Ваши аккаунты</h3>
+                    <div>
+                        <p>Добавить аккаунт</p>
+                        <p>Перейти на бизнес аккаунт</p>
+                    </div>
+                    <h3>Дополнительно</h3>
+                    <div>
+                        <p>Настройки</p>
+                        <p>Настроить ленту</p>
+                        <p>Установить приложение Windows</p>
+                        <p class="expand_popup_p_arrow">Получить справку</p>
+                        <p class="expand_popup_p_arrow">Просмотреть условия и политику...</p>
+                        <p>Выход</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <section class="scrolling" id="scrolling">
+        <div class="scroll_container" id="scrollContainer"></div>
+        <!-- <div class="scroll_container" id="scrollContainerSecond"></div>
+        <div class="scroll_container" id="scrollContainerThird"></div>
+        <div class="scroll_container" id="scrollContainerForth"></div>
+        <div class="scroll_container" id="scrollContainerFifth"></div>
+        <div class="scroll_container" id="scrollContainerSixth"></div> -->
+        <div class="share_popup" id="sharePopup">
+            <p>Отправка пина</p>
+            <div class="share_popup_apps">
+                <div class="WhatsApp">
+                    <img src="./images/whatsapp-icon.png" alt="WhatsApp">
+                    <p>WhatsApp</p>
+                </div>
+                <div class="Facebook">
+                    <img src="./images/facebook-icon.png" alt="Facebook">
+                    <p>Facebook</p>
+                </div>
+                <div class="Twitter">
+                    <img src="./images/twitter-icon.png" alt="Twitter">
+                    <p>Twitter</p>
+                </div>
+                <div class="Letter">
+                    <div>
+                        <img src="./images/letter-icon.png" alt="Letter">
+                    </div>
+                    <p>Письмо</p>
+                </div>
+                <div class="Copy_link">
+                    <div>
+                        <img src="./images/chain-icon.png" alt="Copy_link">
+                    </div>
+                    <p>Копировать ссылку</p>
+                </div>
+            </div>
+            <input type="text" placeholder="Имя или эл. адрес">
+            <div class="share_popup_scrollbar"></div>
+        </div>
+
+        <div class="complaint_popup" id="complaintPopup">
+            <p class="complaint_title">Этот пин похож на те, которые вы недавно просматривал</p>
+            <p>Скрыть пин</p>
+            <p>Скачать изображение</p>
+            <p id="complaintBtn" onclick="popupAddComplaining();">Пожаловаться на пин</p>
+        </div>
+
+        <div class="complaining_bg" id="complainingBg">
+            <div class="complaining_popup" id="complainingPopup">
+                <h1>Жалоба на пин</h1>
+                <div class="complaining_list">
+                    <div class="complaining_list_line">
+                        <div><input type="radio" id="complainingInput" name="complainingInput" onclick="activationBtn()"></div>
+                        <div class="complaining_list_text"><label for="complainingInput">Спам</label>
+                            <p>Вводящие в заблуждение или повторяющиеся публикации</p></div>
+                    </div>
+                    <div class="complaining_list_line">
+                        <div><input type="radio" id="complainingInput" name="complainingInput" onclick="activationBtn()"></div>
+                        <div class="complaining_list_text"><label for="complainingInputSecond">Изображения обнаженного тела или порнография</label>
+                            <p>Содержимое сексуального характера</p></div>
+                    </div>
+                    <div class="complaining_list_line">
+                        <div><input type="radio" id="complainingInput" name="complainingInput" onclick="activationBtn()"></div>
+                        <div class="complaining_list_text"><label for="complainingInputThird">Членовредительство</label>
+                            <p>Расстройства пищевого поведения, нанесение травм себе, суицид</p></div>
+                    </div>
+                    <div class="complaining_list_line">
+                        <div><input type="radio" id="complainingInput" name="complainingInput" onclick="activationBtn()"></div>
+                        <div class="complaining_list_text"><label for="complainingInputForth">Ложная информация</label>
+                            <p>Ложная информация о здоровье или заговоры</p></div>
+                    </div>
+                    <div class="complaining_list_line">
+                        <div><input type="radio" id="complainingInput" name="complainingInput" onclick="activationBtn()"></div>
+                        <div class="complaining_list_text"><label for="complainingInputFifth">Агрессивные действия</label>
+                            <p>Предрассудки, стереотипы, идея превосходства белой расы, оскорбления</p></div>
+                    </div>
+                    <div class="complaining_list_line">
+                        <div><input type="radio" id="complainingInput" name="complainingInput" onclick="activationBtn()"></div>
+                        <div class="complaining_list_text"><label for="complainingInputSixth">Опасные товары</label>
+                            <p>Наркотики, оружие, регулируемые товары</p></div>
+                    </div>
+                    <div class="complaining_list_line">
+                        <div><input type="radio" id="complainingInput" name="complainingInput" onclick="activationBtn()"></div>
+                        <div class="complaining_list_text"><label for="complainingInputSeventh">Преследование или нарушение конфиденциальности</label>
+                            <p>Оскорбления, угрозы, публикация персональных данных</p></div>
+                    </div>
+                    <div class="complaining_list_line">
+                        <div><input type="radio" id="complainingInput" name="complainingInput" onclick="activationBtn()"></div>
+                        <div class="complaining_list_text"><label for="complainingInputEighth">Сцены насилия</label>
+                            <p>Графическое изображение или пропаганда насилия</p></div>
+                    </div>
+                    <div class="complaining_list_line">
+                        <div><input type="radio" id="complainingInput" name="complainingInput" onclick="activationBtn()"></div>
+                        <div class="complaining_list_text"><label for="complainingInputNinth">Это моя интеллектуальная собственность</label>
+                            <p>Нарушение авторских прав или прав на товарный знак</p></div>
+                    </div>
+                </div>
+                <div class="complaining_footer">
+                    <button onclick="popupRemoveComplaining()">Отмена</button>
+                    <button class="complaining_btn" id="complainingBtn" onclick="popupAddReport()" >Далее</button>
+                </div>
+            </div>
+
+            <div class="report_popup" id="reportPopup">
+                <h1>Сообщить о данной проблеме?</h1>
+                <div class="report_block">
+                    <p>Заблокировать пользователя</p>
+                    <div class="block">
+                        <div><input type="checkbox" id="reportInput" name="reportInput"></div>
+                        <div><label for="reportInput">Если вы заблокируете пользователя, вы по-прежнему сможете
+                        просматривать профили друг друга, но не сможете отправлять сообщения,
+                        сохранять пины или поднисываться на обновления друг друга.</label></div>
+                    </div>
+                </div>
+                <div class="report_footer">
+                    <button id="reportBtnBack" onclick="popupRemoveReport()">Назад</button>
+                    <button class="report_btn" id="reportBtn" onclick="popupDoneReport()">Пожаловаться</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="pin_btn" onclick="popupTogglePin()">
+            <div><img src="./images/plus-icon.png" alt="plus"></div>
+        </div>
+        <div class="pin_popup" id="pinPopup">
+            <div><img src="./images/pinterest_black-icon.png" alt="pinterest_black-icon"><p>Установать кнопку для браузера</p></div>
+            <div><img src="./images/plus-icon.png" alt="plus-icon"><p>Создать пин</p></div>
+            <div><img src="./images/copy-icon.png" alt="copy-icon"><p>Создать пин-идею</p></div>
+        </div>
+
+        <div class="extra_btn" onclick="popupToggleExtra()">
+            <div><img src="./images/question_mark-icon.png" alt="question_mark"></div>
+        </div>
+        <div class="extra_popup" id="extraPopup">
+            <div class="extra_popup_upper">
+                <div><p>Посетить Справочный центр</p><img src="./images/right_up-arrow.png" alt="right_up-arrow"></div>
+                <div><p>Создать виджет</p><img src="./images/right_up-arrow.png" alt="right_up-arrow"></div>
+            </div>
+            <div class="extra_popup_footer">
+                <p>О нас</p>
+                <p>Новости</p>
+                <p>Для организаций</p>
+                <p>Вакансии</p>
+                <p>Для разработчиков</p>
+                <p>Авторские права</p>
+                <p>Защита данных</p>
+                <p>Персонализированные объявления</p>
+                <p>Условия</p>
+            </div>
+        </div>
+    </section>
+
+
     <script src="./js/index.js"></script>
+    <script src="./js/utils.js"></script>
 </body>
 
 </html>
